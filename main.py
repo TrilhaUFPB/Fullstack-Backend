@@ -50,5 +50,8 @@ def create_users(body: User):
             VALUES('{password_users}', '{name_users}', '{email_users}')
         """
     )
+@app.get("/users/{user_id}")
+async def read_user(user_id: str):
+    return run_sql("SELECT user_id FROM users")
 
 app.include_router(router=router)
