@@ -50,8 +50,21 @@ def create_users(body: User):
             VALUES('{password_users}', '{name_users}', '{email_users}')
         """
     )
-@app.get("/users/{user_id}")
-async def read_user(user_id: str):
-    return run_sql("SELECT user_id FROM users")
+
+@router.get("/users/{id_users}")
+def read_user(id_users: int):
+    
+    return run_sql(f"SELECT * FROM users WHERE id_users = {id_users}")
+
+@router.put("/users/{id_users}")
+def update_users(id_users : int, body: User):
+    new_password_users, new_name_users, new_email_users = body.password_users, body.name_users, body.email_users
+
+    return run_sql(
+        f"""
+            UPDATE users SET password_users = '{new_password_users}', name_users = '{new_name_users}', email_users = '{new_email_users}'
+            WHERE id_users = {id_users}
+        """    
+    )
 
 app.include_router(router=router)
