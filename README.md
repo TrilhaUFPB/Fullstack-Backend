@@ -10,7 +10,7 @@ Implementar um `CRUD` em FastAPI.
 | R | Read (All) | :white_check_mark: |
 | R | Read (id_users) | :white_check_mark: |
 | U | Update | :white_check_mark: |
-| D | Delete | :x: |
+| D | Delete | :white_check_mark: |
 
 ## Comandos Úteis
 

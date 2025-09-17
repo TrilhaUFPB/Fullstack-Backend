@@ -67,4 +67,8 @@ def update_users(id_users : int, body: User):
         """    
     )
 
+@router.delete("users/{id_users}")
+def delete_users(id_users : int):
+    return run_sql(f"DELETE FROM users WHERE id_users = {id_users}")
+
 app.include_router(router=router)
